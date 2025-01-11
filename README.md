@@ -43,15 +43,15 @@ Data yang digunakan berasal dari kaggle dengan jumlah data 2768 baris dan 10 kol
 ### Variabel-variabel pada Diabetes dataset adalah sebagai berikut:
 
 - Id : Pengidentifikasi unik untuk setiap entri data.
-- Kehamilan : Jumlah kali hamil.
-- Glukosa : Konsentrasi glukosa plasma selama 2 jam dalam tes toleransi glukosa oral.
-- Tekanan Darah : Tekanan darah diastolik (mm Hg).
-- Ketebalan Kulit : Ketebalan lipatan kulit trisep (mm).
+- Pregnancies : Jumlah kali hamil.
+- Glucose : Konsentrasi glukosa plasma selama 2 jam dalam tes toleransi glukosa oral.
+- BloodPressure : Tekanan darah diastolik (mm Hg).
+- SkinThickness : Ketebalan lipatan kulit trisep (mm).
 - Insulin : Insulin serum 2 jam (mu U/ml).
 - BMI : Indeks massa tubuh (berat dalam kg / tinggi dalam m^2).
 - DiabetesPedigreeFunction : Fungsi silsilah diabetes, skor genetik diabetes.
-- Usia : Usia dalam tahun.
-- Hasil : Klasifikasi biner yang menunjukkan keberadaan (1) atau ketiadaan (0) diabetes.
+- Age : Usia dalam tahun.
+- Outcome : Klasifikasi biner yang menunjukkan keberadaan (1) atau ketiadaan (0) diabetes.
 
 **Rubrik/Kriteria Tambahan (Opsional)**:
 - Tahapan yang diperlukan untuk memmahami data antara lain menampilkan deskripsi data, memvisualisasikan korelasi antar feature, memeriksa missing value. 
