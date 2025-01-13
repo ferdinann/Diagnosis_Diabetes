@@ -4,39 +4,29 @@
 
 Proyek Diagnosis Diabetes dibuat dengan tujuan mengidentifikasi individu yang beresiko terkena diabetes, dengan membuat proyek ini diharapkan dapat membantu peningkatan diagnosis dini dan strategi pengobatan yang dipersonalisasi untuk diabetes.
 
-Selamat datang di Diabetes Prediction Dataset, sumber daya yang berharga bagi para peneliti, ilmuwan data, dan profesional medis yang tertarik pada bidang penilaian dan prediksi risiko diabetes. Dataset ini berisi berbagai atribut terkait kesehatan, yang dikumpulkan dengan cermat untuk membantu pengembangan model prediktif guna mengidentifikasi individu yang berisiko terkena diabetes. Dengan berbagi dataset ini, kami bertujuan untuk mendorong kolaborasi dan inovasi dalam komunitas ilmu data, yang mengarah pada peningkatan diagnosis dini dan strategi pengobatan yang dipersonalisasi untuk diabetes.
-
-
-Manfaatkan kumpulan data ini untuk mengeksplorasi hubungan antara berbagai indikator kesehatan dan kemungkinan diabetes. Anda dapat menerapkan teknik pembelajaran mesin untuk mengembangkan model prediktif, strategi pemilihan fitur, dan visualisasi data untuk mengungkap wawasan yang dapat berkontribusi pada penilaian risiko yang lebih akurat. Saat Anda memulai perjalanan dengan kumpulan data ini, ingatlah bahwa penemuan Anda dapat berdampak besar pada pencegahan dan pengelolaan diabetes.
-Pastikan Anda mematuhi pedoman etika dan menghormati privasi individu yang terwakili dalam kumpulan data ini. Kutipan yang tepat dan pengakuan sumber kumpulan data ini dihargai untuk mendorong kolaborasi dan berbagi pengetahuan.
-Mulailah eksplorasi Anda terhadap Kumpulan Data Prediksi Diabetes hari ini dan berkontribusilah pada upaya berkelanjutan untuk memerangi diabetes melalui wawasan dan inovasi berbasis data.
-
-**Rubrik/Kriteria Tambahan (Opsional)**:
 - Masalah ini harus diselesaikan supaya individu bisa melakukan pengobatan atau penanganan lebih lanjut setelah mengetahui diagnosis diabetes nya. Masalah ini dapat diselesaikan dengan membuat model prediktif yang akan memberikan persentasi individu mengalami diabetes 
-- Menyertakan hasil riset terkait atau referensi. Referensi yang diberikan harus berasal dari sumber yang kredibel dan author yang jelas.
-  
-  Format Referensi: [Judul Referensi](https://scholar.google.com/) 
+- [Prediksi Penyakit Diabetes Melitus Menggunakan Metode Support Vector Machine dan Naive Bayes](https://www.researchgate.net/publication/356609443_Prediksi_Penyakit_Diabetes_Melitus_Menggunakan_Metode_Support_Vector_Machine_dan_Naive_Bayes/) 
 
 ## Business Understanding
 
 ### Problem Statements
 
 - Fitur mana yang paling signifikan dalam memprediksi risiko diabetes? 
-- Apakah ada perbedaan pola risiko diabetes antara kelompok usia atau jenis kelamin yang berbeda?
+- Apakah ada pengaruh pola risiko diabetes kelompok usia atau BMI?
 - Bagaimana cara meningkatkan interpretasi model prediksi untuk membantu dokter dalam pengambilan keputusan klinis? 
 
 ### Goals
 
 - Mengetahui fitur mana yang paling berkorelasi dengan hasil klasifikasi
-- Menampilkan grafik untuk melihat pola resiko diabetes antara kelompok usia atau jenis kelamin
+- Menampilkan grafik untuk melihat pola resiko diabetes antara kelompok usia atau BMI
 - Membuat model machine learning yang dapat memprediksi individu mengalami penyakit diabetes seakurat mungkin dengan fitur-fitur yang ada.
 
     ### Solution statements
-    - Menggunakan 4 algoritma yang berbeda untuk mendapatkan model machine learning terbaik.
-    - Melakukan improvement pada baseline model dengan hyperparameter tuning.
+    - Menggunakan 7 algoritma yang berbeda untuk mendapatkan model machine learning terbaik.
+    - Melakukan improvement pada baseline model dengan mengcustom parameter secara manual.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai data yang Anda gunakan dalam proyek. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+[Healthcare Diabetes Dataset](https://www.kaggle.com/datasets/nanditapore/healthcare-diabetes/).
 
 Data yang digunakan berasal dari kaggle dengan jumlah data 2768 baris dan 10 kolom. Semua data adalah numerik dengan 8 feature adalah int dan 2 lainnya adalah float, target feature adalah feature terakhir yaitu Outcome dengan range data 0-1. 
 
@@ -53,34 +43,81 @@ Data yang digunakan berasal dari kaggle dengan jumlah data 2768 baris dan 10 kol
 - Age : Usia dalam tahun.
 - Outcome : Klasifikasi biner yang menunjukkan keberadaan (1) atau ketiadaan (0) diabetes.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
 - Tahapan yang diperlukan untuk memmahami data antara lain menampilkan deskripsi data, memvisualisasikan korelasi antar feature, memeriksa missing value. 
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Pada bagian ini saya menerapkan tiga tahapan yaitu :
+1. Mengambil sample dataset 
+2. Pembagian dataset dengan fungsi train_test_split dari library sklearn.
+3. Standarisasi.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+- Pengambilan sample dataset dimulai dengan index 1651 sampai habis dengan jumlah keseluruhan sample yang diambil adalah 18 baris data
+- Pada pembagian dataset data dibagi menjadi data training dan data testing dengan data testing sebesar 10% dan sisanya adalah data training jumlah masing masing kelompok data adalah data training 1485 dan data testing sebesar 166.
+- Standarisasi dilakukan agar data memiliki rentang nilai yang normal yaitu dengan rata-rata mendekati 0 dan standart deviasi atau std mendekati 1.
+- Tahapan data preparation diperlukan agar data yang digunakan untuk membangun model sudah normal dan optimal sehingga model yang dibangun menjadi lebih akurat dan memiliki performa yang baik.
 
 ## Modeling
-Tahapan ini membahas mengenai model machine learning yang digunakan untuk menyelesaikan permasalahan. Anda perlu menjelaskan tahapan dan parameter yang digunakan pada proses pemodelan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan kelebihan dan kekurangan dari setiap algoritma yang digunakan.
-- Jika menggunakan satu algoritma pada solution statement, lakukan proses improvement terhadap model dengan hyperparameter tuning. **Jelaskan proses improvement yang dilakukan**.
-- Jika menggunakan dua atau lebih algoritma pada solution statement, maka pilih model terbaik sebagai solusi. **Jelaskan mengapa memilih model tersebut sebagai model terbaik**.
-
+Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun 7 algoritma yang berbeda diantaranya adalah :
+1. KNN dengan parameter n_neighbors=7
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+2. Random Forest dengan parameter n_estimators=40, max_depth=16, random_state=32, n_jobs=-1
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+3. Gradient Boosting dengan parameter random_state=42,n_estimators=100,learning_rate=0.2
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+4. SVM dengan parameter random_state=42
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+5. XGBoost dengan parameter random_state=42
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+6. Decision Tree dengan parameter random_state=20
+   tahapan :
+   - import library
+   - inisialisasi variabel yang menampung algoritma
+   - latih model
+   - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+7. Neural Network dengan Tensorflow
+   tahapan :
+   - import library
+   - membuat input layers dengan neuron 64 dan activation relu
+   - menambahkan dropout dengan nilai 0.5
+   - menambahkan hidden layers dengan neuron 32 dan activation relu
+   - menambahkan batch normalization
+   - menambahkan hidden layers dengan jumlah neuron 16 dan activation relu
+   - menambahkan output layers dengan jumlah neuron 2 sesuai jumlah klasifikasi dan activation sigmoid
+   - mengcompile model dengan optimasi adam, loss fuctions binary crossentropy dan metriks accuracy
+   - menampilkan summary dari model
+   - melatih model dengan parameter X_train, y_train, epochs=30, batch_size=32, validation_split=0.1
+   - mengevaluasi model untuk melihat akurasi dan loss fuctions nya
+     
 ## Evaluation
-Pada bagian ini anda perlu menyebutkan metrik evaluasi yang digunakan. Lalu anda perlu menjelaskan hasil proyek berdasarkan metrik evaluasi yang digunakan.
+Metrik evaluasi yang digunakan adalah antara lain :
+1. accuracy
+2. precision
+3. recall
+4. f1
 
-Sebagai contoh, Anda memiih kasus klasifikasi dan menggunakan metrik **akurasi, precision, recall, dan F1 score**. Jelaskan mengenai beberapa hal berikut:
 - Penjelasan mengenai metrik yang digunakan
-- Menjelaskan hasil proyek berdasarkan metrik evaluasi
-
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
-
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
-
-**---Ini adalah bagian akhir laporan---**
+- akurasi adalah metrik yang mengukur seberapa sering model memprediksi dengan benar
+- precision adalah metrik yang mengukur seberapa akurat model dalam memprediksi kelas positif
+- recall adalah metrik yang Mengukur seberapa baik model dalam mengidentifikasi semua kasus positif yang sebenarnya
+- f1 adalah metrik gabungan antara precision dan recall
+- Berdasarkan ke-4 metrik yang digunakan setelah di evaluasi maka semua model memiliki performa baik tetapi ada tiga model yang memiliki akurasi dibawah 90% yaitu KNN, SVM, dan Neural Network. 
