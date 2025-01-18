@@ -53,14 +53,19 @@ Data yang digunakan berasal dari kaggle dengan jumlah data 2768 baris dan 9 kolo
 - Tahapan yang diperlukan untuk memmahami data antara lain menampilkan deskripsi data, memvisualisasikan korelasi antar feature, memeriksa missing value. 
 
 ## Data Preparation
-Pada bagian ini saya menerapkan tiga tahapan yaitu :
-1. Pembagian dataset dengan fungsi train_test_split dari library sklearn.
-2. Standarisasi.
+Pada bagian ini ada lima tahapan yaitu :
+1. Mengahpus kolom ID
+2. Memfilter data SkinThickness
 3. Handling outlier
+4. Pembagian dataset dengan fungsi train_test_split dari library sklearn.
+5. Standarisasi.
 
+
+- Menghapus kolom ID karena tidak berpengaruh dan tidak digunakan dalam membuat model prediksi status diabetes.
+- Memfilter data SkinThickness yang lebih besar dari 0 karena tidak mungkin ada pasien yang memiliki ketebalan kulit 0 atau lebih kecil.
+- Handling outlier dilakukan dengan membuat variabel IQR yang berisi operasi matematika untuk menentukan batas atas dan batas bawah dan mengapus data yang ada di luar dari batas bawah dan atas.
 - Pada pembagian dataset data dibagi menjadi data training dan data testing dengan data testing sebesar 20% dan sisanya adalah data training jumlah masing masing kelompok data adalah data training 1335 dan data testing sebesar 334.
 - Standarisasi dilakukan agar data memiliki rentang nilai yang normal yaitu dengan rata-rata mendekati 0 dan standart deviasi atau std mendekati 1.
-- Handling outlier dilakukan dengan membuat variabel IQR yang berisi operasi matematika untuk menentukan batas atas dan batas bawah dan mengapus data yang ada di luar dari batas bawah dan atas.
 - Tahapan data preparation diperlukan agar data yang digunakan untuk membangun model sudah normal dan optimal sehingga model yang dibangun menjadi lebih akurat dan memiliki performa yang baik.
 
 ## Modeling
@@ -169,11 +174,32 @@ Metrik evaluasi yang digunakan adalah antara lain :
 3. recall
 4. f1
 
+|   | test_accuracy  | test_precision  |  test_recall |  test_f1 |
+|---|---|---|---|---|
+| KNN  | 0.850299  | 0.793478  |  0.701923 | 0.744898  |
+| RF  |  0.988024 | 0.962963  |  1.0 | 0.981132  |
+| Boosting  |  0.973054 | 0.952381  |  0.961538 | 0.956938  |
+| SVM  | 0.859281  | 0.827586  | 0.692308  | 0.753927  |
+| XGB  |  0.997006 | 0.990476  | 1.0  | 0.995215  |
+| DT  |  0.991018 | 0.971963  |  1.0 | 0.985782  |
+
 - Penjelasan mengenai metrik yang digunakan
   - akurasi adalah metrik yang mengukur seberapa sering model memprediksi dengan benar
   - precision adalah metrik yang mengukur seberapa akurat model dalam memprediksi kelas positif
   - recall adalah metrik yang Mengukur seberapa baik model dalam mengidentifikasi semua kasus positif yang sebenarnya
   - f1 adalah metrik gabungan antara precision dan recall
+
+- formula metrik yang digunakan
+  - Akurasi = (TP + TN) / (TP + TN + FP + FN)
+  - Precicion = TP / (TP + FP)
+  - Recall = TP / (TP + FN)
+  - F1-score = 2 * (precision * recall) / (precision + recall)
+- Penjelasan :
+  - TP = True Positive
+  - TN = True Negative
+  - FN = False Negative
+  - FP = False Positive
+  
     
 - Berdasarkan model yang telah dibuat dan di evaluasi maka problem statement yang telah dibuat sebelumnya sudah terjawab dan juga telah mencapai goals yang diharapkan
   - fitur yang paling berkorelasi dengan resiko terkena diabetes adalah glucose, age dan bmi.
