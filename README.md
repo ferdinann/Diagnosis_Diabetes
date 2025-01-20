@@ -182,7 +182,8 @@ Metrik evaluasi yang digunakan adalah antara lain :
 | SVM  | 0.859281  | 0.827586  | 0.692308  | 0.753927  |
 | XGB  |  0.997006 | 0.990476  | 1.0  | 0.995215  |
 | DT  |  0.991018 | 0.971963  |  1.0 | 0.985782  |
-
+| TF  |  0.838323 | 0.878788  |  0.557692 | 0.682353  |
+			
 - Penjelasan mengenai metrik yang digunakan
   - akurasi adalah metrik yang mengukur seberapa sering model memprediksi dengan benar
   - precision adalah metrik yang mengukur seberapa akurat model dalam memprediksi kelas positif
