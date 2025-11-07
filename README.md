@@ -1,18 +1,17 @@
 # Laporan Proyek Machine Learning - Ferdinanta Ginting
 
 ##  Diagnosis Diabetes
-
-Diabetes melitus merupakan penyakit kronis yang ditandai dengan tingginya kadar gula darah dalam tubuh. Penyakit ini telah menjadi masalah kesehatan global yang serius, dengan jumlah penderita terus meningkat setiap tahunnya. Jika tidak dikelola dengan baik, diabetes dapat menyebabkan berbagai komplikasi serius, seperti penyakit jantung, stroke, kerusakan ginjal, kebutaan, dan amputasi.
+Diabetes melitus merupakan penyakit kronis yang ditandai dengan tingginya kadar gula darah dalam tubuh. Penyakit ini telah menjadi masalah kesehatan global yang serius, dengan jumlah penderita terus meningkat setiap tahunnya [1]. Jika tidak dikelola dengan baik, diabetes dapat menyebabkan berbagai komplikasi serius, seperti penyakit jantung, stroke, kerusakan ginjal, kebutaan, dan amputasi [1], [2].
 
 Diagnosis dini diabetes sangat penting untuk mencegah terjadinya komplikasi yang parah. Namun, seringkali diabetes terdiagnosis pada tahap lanjut ketika komplikasi sudah mulai muncul. Hal ini disebabkan oleh beberapa faktor, antara lain:
 
-- Gejala awal yang tidak spesifik: Diabetes seringkali tidak menunjukkan gejala yang jelas pada tahap awal, sehingga banyak penderita tidak menyadari kondisi mereka.
+- Gejala awal yang tidak spesifik: Diabetes seringkali tidak menunjukkan gejala yang jelas pada tahap awal, sehingga banyak penderita tidak menyadari kondisi mereka [3].
 - Kurangnya kesadaran: Masyarakat masih kurang memahami tentang diabetes dan faktor risiko yang terkait.
-- Keterbatasan akses: Tidak semua orang memiliki akses yang mudah ke fasilitas kesehatan untuk melakukan pemeriksaan gula darah secara rutin.
+- Keterbatasan akses: Tidak semua orang memiliki akses yang mudah ke fasilitas kesehatan untuk melakukan pemeriksaan gula darah secara rutin [1].
 
 Proyek Diagnosis Diabetes dibuat dengan tujuan mengidentifikasi individu yang beresiko terkena diabetes, dengan membuat proyek ini diharapkan dapat membantu peningkatan diagnosis dini dan strategi pengobatan yang dipersonalisasi untuk diabetes.
 
-- Masalah ini harus diselesaikan supaya individu bisa melakukan pengobatan atau penanganan lebih lanjut setelah mengetahui diagnosis diabetes nya. Masalah ini dapat diselesaikan dengan membuat model prediktif yang akan memberikan persentasi individu mengalami diabetes 
+- Masalah ini harus diselesaikan supaya individu bisa melakukan pengobatan atau penanganan lebih lanjut setelah mengetahui diagnosis diabetes-nya. Masalah ini dapat diselesaikan dengan membuat model prediktif yang akan memberikan persentase individu mengalami diabetes.
 - [Prediksi Penyakit Diabetes Melitus Menggunakan Metode Support Vector Machine dan Naive Bayes](https://www.researchgate.net/publication/356609443_Prediksi_Penyakit_Diabetes_Melitus_Menggunakan_Metode_Support_Vector_Machine_dan_Naive_Bayes/) 
 
 ## Business Understanding
@@ -82,6 +81,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Implementasi sederhana dan mudah dipahami.
+   - Tidak memerlukan asumsi distribusi data.
+   - Efektif untuk dataset kecil dengan pola yang jelas.
+- Kekurangan:
+   - Tidak efisien pada dataset besar karena menghitung jarak ke semua titik data.
+   - Sensitif terhadap skala fitur dan keberadaan noise atau outlier.
+   - Pemilihan nilai K sangat memengaruhi hasil akurasi.
 2. Random Forest dengan parameter n_estimators=40, max_depth=16, random_state=32, n_jobs=-1
 - Prinsip Kerja: Ensemble dari banyak pohon keputusan.
 - Cara Kerja:
@@ -97,6 +104,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Dapat menangani data dengan banyak fitur tanpa overfitting secara signifikan.
+   - Memberikan estimasi pentingnya setiap fitur (feature importance).
+   - Stabil terhadap noise dan outlier.
+- Kekurangan:
+   - Interpretasi hasil model sulit karena sifatnya black box.
+   - Memerlukan waktu dan memori yang lebih besar dibanding model sederhana.
+   - Tidak cocok untuk data real-time karena waktu inferensi relatif lama.
 3. Gradient Boosting dengan parameter random_state=42,n_estimators=100,learning_rate=0.2
 - Prinsip Kerja: Membangun model secara bertahap, dengan setiap model baru mencoba memperbaiki kesalahan model sebelumnya.
 - Cara Kerja:
@@ -111,6 +126,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Memberikan akurasi tinggi pada banyak permasalahan klasifikasi.
+   - Mampu menangani data yang tidak seimbang dengan baik.
+   - Fleksibel karena dapat menggunakan berbagai fungsi loss.
+- Kekurangan:
+   - Proses pelatihan relatif lambat.
+   - Rentan terhadap overfitting jika jumlah estimator terlalu banyak.
+   - Memerlukan tuning parameter yang cermat untuk hasil optimal.
 4. SVM dengan parameter random_state=42
 - Prinsip Kerja: Mencari hiperplane yang memisahkan data ke dalam kelas yang berbeda dengan margin sebesar-besarnya.
 - Cara Kerja:
@@ -124,6 +147,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Efektif pada data berdimensi tinggi.
+   - Dapat digunakan dengan berbagai kernel untuk memetakan data non-linear.
+   - Memiliki generalisasi yang baik pada dataset dengan margin yang jelas.
+- Kekurangan:
+   - Kurang efisien pada dataset besar karena waktu komputasi tinggi.
+   - Sulit untuk menentukan parameter kernel dan C yang optimal.
+   - Kurang cocok untuk data dengan noise tinggi dan tumpang tindih antar kelas.
 5. XGBoost dengan parameter random_state=42
 - Prinsip Kerja: Mirip dengan Gradient Boosting, tetapi lebih efisien dan memiliki lebih banyak parameter tuning.
 - Cara Kerja:
@@ -134,6 +165,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Lebih cepat dan efisien dibanding Gradient Boosting konvensional.
+   - Mendukung regularisasi (L1 dan L2) untuk mengurangi overfitting.
+   - Dapat menangani nilai yang hilang (missing value) secara otomatis.
+- Kekurangan:
+   - Kompleksitas model tinggi, sulit diinterpretasikan.
+   - Membutuhkan sumber daya komputasi besar untuk pelatihan.
+   - Parameter tuning cukup rumit dan sensitif terhadap data.
 6. Decision Tree dengan parameter random_state=20
 - Prinsip Kerja: Membangun pohon keputusan untuk membuat prediksi.
 - Cara Kerja:
@@ -147,6 +186,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - inisialisasi variabel yang menampung algoritma
    - latih model
    - simpan model untuk melihat performa nya setelah semua model selesai dibangun
+- Kelebihan:
+   - Mudah dipahami dan diinterpretasikan secara visual.
+   - Tidak memerlukan normalisasi data.
+   - Mampu menangani data numerik dan kategorikal.
+- Kekurangan:
+   - Mudah mengalami overfitting jika tidak dilakukan pruning.
+   - Perubahan kecil pada data dapat menghasilkan struktur pohon yang berbeda.
+   - Kurang stabil jika digunakan tanpa teknik ensemble seperti Random Forest.
 7. Neural Network dengan Tensorflow
 - Prinsip Kerja: Meniru cara kerja otak manusia dengan menggunakan banyak neuron yang saling terhubung.
 - Cara Kerja:
@@ -166,6 +213,14 @@ Model yang dibangun untuk menyelesaikan permasalahan ini dibuat dengan membangun
    - menampilkan summary dari model
    - melatih model dengan parameter X_train, y_train, epochs=30, batch_size=32, validation_split=0.1
    - mengevaluasi model untuk melihat akurasi dan loss fuctions nya
+- Kelebihan:
+   - Mampu memodelkan hubungan non-linear yang kompleks.
+   - Cocok untuk dataset besar dengan banyak fitur.
+   - Dapat melakukan feature learning secara otomatis.
+- Kekurangan:
+   - Memerlukan waktu pelatihan yang lama dan sumber daya tinggi (GPU/CPU).
+   - Sulit diinterpretasikan karena bersifat black box.
+   - Membutuhkan tuning banyak parameter (jumlah layer, neuron, learning rate).
      
 ## Evaluation
 Metrik evaluasi yang digunakan adalah antara lain :
@@ -209,3 +264,9 @@ Metrik evaluasi yang digunakan adalah antara lain :
     Network.
 
 - Solution statement yang direncanakan berdampak karena melalui ke-7 model yang dibangun dapat dilihat bahwa setiap model memiliki hasil loss fuctions dan akurasi yang beragam sehingga model yang dibangun bisa di evaluasi dan dibandingkan dengan lainnya sehingga mempermudah pemilihan model yang tepat untuk menyelesaikan permasalahan.
+
+  ## Daftar Pustaka
+
+- [1] World Health Organization, “Diabetes – Fact sheet,” Oct. 2024. [Online]. Available: https://www.who.int/news-room/fact-sheets/detail/diabetes. [Accessed: Nov. 7, 2025].
+- [2] M. S. Usman et al., “The Interplay Between Diabetes, Cardiovascular Disease, and Kidney Disease,” NCBI Bookshelf, 2021. [Online]. Available: https://www.ncbi.nlm.nih.gov/books/NBK571718/. [Accessed: Nov. 7, 2025].
+- [3] E. Dal Canto et al., “Diabetes as a cardiovascular risk factor: An overview of global evidence,” Eur. J. Prev. Cardiol., vol. 26, Suppl. 2, pp. 25–35, 2019.
